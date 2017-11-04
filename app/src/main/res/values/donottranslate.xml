@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Release notes -->
+    <string name="release_44">Added a toggle for flipping front camera photos horizontally</string>
+    <string name="release_39">
+        Add an option to focus the photo before capture\n
+        Add an option to use the volume buttons as shutter
+    </string>
+    <string name="release_35">Added an automatic flash mode</string>
+    <string name="release_33">
+        Added more color customization options\n
+        Your settings have been cleared, please reset them\n
+        Moved the resolution picker onto the main screen
+    </string>
+
+</resources>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Eenvoudig Camera</string>
+    <string name="app_launcher_name">Camera</string>
+    <string name="camera_unavailable">Camera niet beschikbaar</string>
+    <string name="camera_open_error">Een fout opgetreden met de camera</string>
+    <string name="video_creating_error">Een fout opgetreden maken van het videobestand</string>
+    <string name="video_mode_error">Schakelen naar de videomodus is mislukt</string>
+    <string name="save_error_internal_storage">Er is een fout opgetreden, de map opslaan is gewijzigd in interne opslag</string>
+    <string name="camera_switch_error">Schakelen camera is mislukt</string>
+    <string name="no_permissions">Kan niets doen zonder toegang tot uw camera en opslag</string>
+    <string name="no_audio_permissions">Toestemming voor audio nodig is voor het opnemen van video\'s</string>
+    <string name="no_gallery_app_available">Geen gallery app beschikbaar</string>
+    <string name="click_to_resume_preview">Click on the image to resume preview</string>
+    <string name="photo_not_saved">The photo could not be saved</string>
+
+    <!-- other aspect ratio -->
+    <string name="other">Ander</string>
+
+    <!-- Settings -->
+    <string name="save_photos">Opslaan foto\'s en video\'s naar</string>
+    <string name="show_preview">Bekijk een voorbeeld na het nemen van een foto</string>
+    <string name="shutter_sound">Sluiter geluid</string>
+    <string name="back_camera">Terug camera resoluties</string>
+    <string name="front_camera">Camera aan de voorkant resoluties</string>
+    <string name="photo">Foto</string>
+    <string name="video">Video</string>
+    <string name="focus_before_capture">Focus before capture</string>
+    <string name="volume_buttons_as_shutter">Use volume buttons as shutter</string>
+    <string name="turn_flash_off_at_startup">Turn flash off at startup</string>
+    <string name="flip_front_camera_photos_horizontally">Flip front camera photos horizontally</string>
+
+    <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- Short description has to have less than 80 chars -->
+    <string name="app_short_description">Een camera met flits, zoom en geen advertenties.</string>
+    <string name="app_long_description">
+        De camera is geschikt voor zowel foto\’s en video-opname. U kunt schakelen tussen de camera\’s, verander de opslaglocatie en de resolutie te beperken. Flash kan worden gebruikt. U kunt knijpen en zoom.
+
+        Als standaard te gebruiken, Verwijder de standaard camera in Instellingen -> Apps.
+
+        De applicatie heeft geen advertenties of onnodige machtigingen bevatten. Het is volledig open source, biedt een Dark thema.
+
+        U kunt meer Simple apps bij http://www.simplemobiletools.com vinden.
+    </string>
+
+    <!--
+        Haven't found some strings? There's more at
+        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
+    -->
+</resources>
