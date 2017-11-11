@@ -29,6 +29,7 @@ import com.googlecode.mp4parser.authoring.container.mp4.MovieCreator
 import com.googlecode.mp4parser.authoring.tracks.AppendTrack
 import com.simplemobiletools.camera.*
 import com.simplemobiletools.camera.Preview.PreviewListener
+
 import com.simplemobiletools.camera.extensions.config
 import com.simplemobiletools.camera.extensions.navBarHeight
 import com.simplemobiletools.camera.views.FocusRectView
@@ -179,7 +180,7 @@ class MainActivity : SimpleActivity(), PreviewListener, PhotoProcessor.MediaSave
 
     private fun initButtons() {
         toggle_camera.setOnClickListener { toggleCamera() }
-        last_photo_video_preview.setOnClickListener { showLastMediaPreview() }
+        btn_gallery.setOnClickListener { goOnGallery() }
 //        toggle_flash.setOnClickListener { toggleFlash() }
         shutter.setOnClickListener { shutterPressed() }
         settings.setOnClickListener { launchSettings() }
@@ -187,6 +188,7 @@ class MainActivity : SimpleActivity(), PreviewListener, PhotoProcessor.MediaSave
         change_resolution.setOnClickListener { mPreview?.showChangeResolutionDialog() }
         make_diary.setOnClickListener{ makeDiary()}
     }
+
 
     var cntFiles : Int = 0
     fun makeDiary(){
@@ -284,6 +286,11 @@ class MainActivity : SimpleActivity(), PreviewListener, PhotoProcessor.MediaSave
         } else {
             toast(R.string.camera_switch_error)
         }
+    }
+
+    private fun goOnGallery(){
+        var mainToGallery = Intent(this, GalleryActivity::class.java)
+        startActivity(mainToGallery)
     }
 
     private fun showLastMediaPreview() {
@@ -468,7 +475,7 @@ class MainActivity : SimpleActivity(), PreviewListener, PhotoProcessor.MediaSave
                         .load(mPreviewUri)
                         .apply(options)
                         .transition(DrawableTransitionOptions.withCrossFade())
-                        .into(last_photo_video_preview)
+                        .into(btn_gallery)
             }
         }
     }
@@ -623,7 +630,7 @@ class MainActivity : SimpleActivity(), PreviewListener, PhotoProcessor.MediaSave
     }
 
     private fun animateViews(degrees: Int) {
-        val views = arrayOf<View>(toggle_camera, change_resolution, shutter, settings, last_photo_video_preview)
+        val views = arrayOf<View>(toggle_camera, change_resolution, shutter, settings, btn_gallery)
         for (view in views) {
             rotate(view, degrees)
         }

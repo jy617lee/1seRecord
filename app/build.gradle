@@ -12,6 +12,7 @@ android {
         targetSdkVersion 23
         versionCode 45
         versionName "2.3.6"
+        multiDexEnabled true
     }
 
     signingConfigs {
@@ -40,6 +41,8 @@ dependencies {
     compile 'com.simplemobiletools:commons:2.28.4'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile 'com.googlecode.mp4parser:isoparser:1.1.21'
+    compile 'com.android.support:recyclerview-v7:25.3.1'
+    compile 'com.android.support:multidex:1.0.1'
 }
 
 buildscript {

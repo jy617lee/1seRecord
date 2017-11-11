@@ -62,7 +62,7 @@
             android:src="@drawable/ic_shutter"/>
 
         <ImageView
-            android:id="@+id/last_photo_video_preview"
+            android:id="@+id/btn_gallery"
             android:layout_width="@dimen/icon_size"
             android:layout_height="@dimen/icon_size"
             android:layout_weight="1"

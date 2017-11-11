@@ -81,6 +81,7 @@
             android:label="@string/settings"
             android:parentActivityName=".activities.MainActivity"/>
 
+        <activity android:name=".activities.GalleryActivity"/>
         <receiver
             android:name=".HardwareShutterReceiver">
             <intent-filter>
