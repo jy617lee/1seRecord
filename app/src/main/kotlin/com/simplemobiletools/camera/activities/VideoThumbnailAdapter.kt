@@ -21,21 +21,35 @@ class VideoThumbnailAdapter(private val context: Context,
                             private val galleryList: ArrayList<CreateList>)
                                 : RecyclerView.Adapter<VideoThumbnailAdapter.ViewHolder>() {
 
+    var cols : Int = 2
+    constructor(context : Context, galleryList: ArrayList<CreateList>, cols : Int)
+    : this(context, galleryList) {
+        this.cols = cols
+    }
+
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): VideoThumbnailAdapter.ViewHolder {
         val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.compo_one_video, viewGroup, false)
+
+        val width : Int = viewGroup.measuredWidth / cols
+        view.layoutParams = RecyclerView.LayoutParams(width, width)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(viewHolder: VideoThumbnailAdapter.ViewHolder, i: Int) {
+        //뷰 크기 지정해주기
         //제목 파싱해주기
-        val title =
-        viewHolder.title.setText(galleryList[i].title)
-        viewHolder.img.setScaleType(ImageView.ScaleType.CENTER_CROP)
+        var title = (galleryList[i].title)
+        if(title != null){
+            viewHolder.title.setText(title)
+        }
 
-        //uri에서 썸네일 구하기
-        val thumbnail = ThumbnailUtils.createVideoThumbnail(galleryList[i].title, MediaStore.Video.Thumbnails.MICRO_KIND)
+        //썸네일 이미지 넣기
+        viewHolder.img.setScaleType(ImageView.ScaleType.CENTER_CROP)
+        val thumbnail = ThumbnailUtils.createVideoThumbnail(galleryList[i].title, MediaStore.Video.Thumbnails.MINI_KIND)
         viewHolder.img.setImageBitmap(thumbnail)
     }
+
+
 
     override fun getItemCount(): Int {
         return galleryList.size
@@ -44,7 +58,7 @@ class VideoThumbnailAdapter(private val context: Context,
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val title: TextView
         val img: ImageView
-
+        //타이틀 / 썸네일 넣어주기
         init {
             title = view.findViewById(R.id.title) as TextView
             img = view.findViewById(R.id.video_thumbnail) as ImageView

@@ -14,6 +14,7 @@ import java.util.*
  */
 class GalleryActivity : SimpleActivity(){
     var arrayVideoTitles = ArrayList<String>()
+    var cols = 3;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gallery)
@@ -21,7 +22,7 @@ class GalleryActivity : SimpleActivity(){
         val recyclerView = findViewById(R.id.image_gallery) as RecyclerView
         recyclerView.setHasFixedSize(true)
 
-        val layoutManager = GridLayoutManager(applicationContext, 2)
+        val layoutManager = GridLayoutManager(applicationContext, cols)
         recyclerView.layoutManager = layoutManager
 
         //배열에 비디오 제목 넣기
@@ -30,8 +31,8 @@ class GalleryActivity : SimpleActivity(){
         //썸네일 클릭하면 큰 화면으로 나오기
 
 
-       val createLists = prepareData(arrayVideoTitles)
-        val adapter = VideoThumbnailAdapter(applicationContext, createLists)
+        val createLists = prepareData(arrayVideoTitles)
+        val adapter = VideoThumbnailAdapter(applicationContext, createLists, cols)
         recyclerView.adapter = adapter
     }
 
