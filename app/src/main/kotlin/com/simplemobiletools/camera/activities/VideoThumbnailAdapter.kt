@@ -38,7 +38,7 @@ class VideoThumbnailAdapter(private val context: Context,
     override fun onBindViewHolder(viewHolder: VideoThumbnailAdapter.ViewHolder, i: Int) {
         //뷰 크기 지정해주기
         //제목 파싱해주기
-        var title = (galleryList[i].title)
+        var title : String? = parseTitle(galleryList[i].title)
         if(title != null){
             viewHolder.title.setText(title)
         }
@@ -50,6 +50,20 @@ class VideoThumbnailAdapter(private val context: Context,
     }
 
 
+    private fun parseTitle(titleInput : String) : String? {
+        val regex = Regex(pattern = "20[0-9]{6}")
+
+        val matchedResults = regex.findAll(input = titleInput, startIndex = 0)
+        if(matchedResults == null){
+            return null
+        }else{
+            val result = StringBuilder()
+            for (matchedText in matchedResults) {
+                result.append(matchedText.value + " ")
+            }
+            return result.toString()
+        }
+    }
 
     override fun getItemCount(): Int {
         return galleryList.size
