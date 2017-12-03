@@ -5,9 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 >
+    <Button
+        android:id="@+id/btn_try_make_movie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Make Video"
+        android:background="@color/default_dark_theme_text_color"
+        android:textColor="@android:color/black"
+        />
     <android.support.v7.widget.RecyclerView
         android:id="@+id/image_gallery"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/btn_try_make_movie"
         />
 </RelativeLayout>

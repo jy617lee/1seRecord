@@ -4,10 +4,11 @@ import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.simplemobiletools.camera.R
+import com.simplemobiletools.camera.dialogs.VideoConfigDialog
 import com.simplemobiletools.camera.extensions.config
+import kotlinx.android.synthetic.main.activity_gallery.*
 import java.io.File
 import java.util.*
-
 
 /**
  * Created by jeeyunlee on 04/11/2017.
@@ -30,10 +31,10 @@ class GalleryActivity : SimpleActivity(){
         //갤러리 뷰로 만들어서 뿌리기 (제목을 파싱해서 날짜로 뿌리기)
         //썸네일 클릭하면 큰 화면으로 나오기
 
-
         val createLists = prepareData(arrayVideoTitles)
         val adapter = VideoThumbnailAdapter(applicationContext, createLists, cols)
         recyclerView.adapter = adapter
+        btn_try_make_movie.setOnClickListener{showMakeMovieDialog()}
     }
 
     fun getVideoTitles() : ArrayList<String>{
@@ -47,6 +48,15 @@ class GalleryActivity : SimpleActivity(){
             }
         }
         return arrayVideoTitles
+    }
+
+    private fun showMakeMovieDialog(){
+        //다이얼로그 띄워주고
+            //시작 텍스트 가져오기
+            //끝 텍스트 가져오기
+        VideoConfigDialog(this, "11/11/2016", "12/12/2016"){
+            //정해진 날짜에 대해서 합치기 시작!
+        }
     }
 
     private fun prepareData(videoList : ArrayList<String>): ArrayList<CreateList> {

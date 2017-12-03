@@ -8,8 +8,8 @@ android {
 
     defaultConfig {
         applicationId "com.simplemobiletools.camera"
-        minSdkVersion 16
-        targetSdkVersion 23
+        minSdkVersion 24
+        targetSdkVersion 25
         versionCode 45
         versionName "2.3.6"
         multiDexEnabled true
@@ -43,6 +43,7 @@ dependencies {
     compile 'com.googlecode.mp4parser:isoparser:1.1.21'
     compile 'com.android.support:recyclerview-v7:25.3.1'
     compile 'com.android.support:multidex:1.0.1'
+
 }
 
 buildscript {
