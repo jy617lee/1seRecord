@@ -1,6 +1,7 @@
 package com.simplemobiletools.camera.activities
 
 //import com.simplemobiletools.camera.R.id.toggle_flash
+
 import android.Manifest
 import android.app.Activity
 import android.content.ActivityNotFoundException
@@ -22,23 +23,14 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
-import com.googlecode.mp4parser.authoring.Movie
-import com.googlecode.mp4parser.authoring.Track
-import com.googlecode.mp4parser.authoring.builder.DefaultMp4Builder
-import com.googlecode.mp4parser.authoring.container.mp4.MovieCreator
-import com.googlecode.mp4parser.authoring.tracks.AppendTrack
 import com.simplemobiletools.camera.*
 import com.simplemobiletools.camera.Preview.PreviewListener
-
 import com.simplemobiletools.camera.extensions.config
 import com.simplemobiletools.camera.extensions.navBarHeight
 import com.simplemobiletools.camera.views.FocusRectView
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.models.Release
 import kotlinx.android.synthetic.main.activity_main.*
-import java.io.File
-import java.io.RandomAccessFile
-import java.text.SimpleDateFormat
 import java.util.*
 
 //todo : base activity가 뭐징
@@ -186,57 +178,57 @@ class MainActivity : SimpleActivity(), PreviewListener, PhotoProcessor.MediaSave
         settings.setOnClickListener { launchSettings() }
 //        toggle_photo_video.setOnClickListener { handleTogglePhotoVideo() }
         change_resolution.setOnClickListener { mPreview?.showChangeResolutionDialog() }
-        make_diary.setOnClickListener{ makeDiary()}
+//        make_diary.setOnClickListener{ makeDiary()}
     }
 
 
-    var cntFiles : Int = 0
-    fun makeDiary(){
-        //그 폴더의 uri모두 가져오기
-        var dirRootPath = File(config.savePhotosFolder)
-        cntFiles = dirRootPath.listFiles().size
-        var videoUris = ArrayList<String>(cntFiles)
-        for(video in dirRootPath.listFiles()){
-            if(video.length() != 0L){
-                videoUris.add(video.absolutePath)
-            }
-        }
-
-        //리스트에 비디오 저장하기
-        var videoTrack = LinkedList<Track>()
-        var audioTrack = LinkedList<Track>()
-        for(videoUri in videoUris){
-            var movie = MovieCreator.build(videoUri)
-            //오디오가 밀릴 경우
-
-            for(track in movie.tracks){
-                if(track.handler.equals("soun")){
-                    audioTrack.add(track)
-                }else if(track.handler.equals("vide")) {
-                    videoTrack.add(track)
-                }
-            }
-        }
-
-        //하나로 만들기
-        var result = Movie()
-        if(!audioTrack.isEmpty()){
-            result.addTrack(AppendTrack(*audioTrack.toTypedArray()))
-        }
-
-        if(!videoTrack.isEmpty()){
-            result.addTrack(AppendTrack(*videoTrack.toTypedArray()))
-        }
-
-        //저장하기
-        var out = DefaultMp4Builder().build(result)
-
-//        var file = File(getOutputMediaFile(false) + File.separator + "videoDiary.mp4")
-        val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
-        val fc = RandomAccessFile(config.savePhotosFolder + File.separator + "videoDiary" + timestamp + ".mp4", "rw").channel
-        out.writeContainer(fc)
-        fc.close()
-    }
+//    var cntFiles : Int = 0
+//    fun makeDiary(){
+//        //그 폴더의 uri모두 가져오기
+//        var dirRootPath = File(config.savePhotosFolder)
+//        cntFiles = dirRootPath.listFiles().size
+//        var videoUris = ArrayList<String>(cntFiles)
+//        for(video in dirRootPath.listFiles()){
+//            if(video.length() != 0L){
+//                videoUris.add(video.absolutePath)
+//            }
+//        }
+//
+//        //리스트에 비디오 저장하기
+//        var videoTrack = LinkedList<Track>()
+//        var audioTrack = LinkedList<Track>()
+//        for(videoUri in videoUris){
+//            var movie = MovieCreator.build(videoUri)
+//            //오디오가 밀릴 경우
+//
+//            for(track in movie.tracks){
+//                if(track.handler.equals("soun")){
+//                    audioTrack.add(track)
+//                }else if(track.handler.equals("vide")) {
+//                    videoTrack.add(track)
+//                }
+//            }
+//        }
+//
+//        //하나로 만들기
+//        var result = Movie()
+//        if(!audioTrack.isEmpty()){
+//            result.addTrack(AppendTrack(*audioTrack.toTypedArray()))
+//        }
+//
+//        if(!videoTrack.isEmpty()){
+//            result.addTrack(AppendTrack(*videoTrack.toTypedArray()))
+//        }
+//
+//        //저장하기
+//        var out = DefaultMp4Builder().build(result)
+//
+////        var file = File(getOutputMediaFile(false) + File.separator + "videoDiary.mp4")
+//        val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+//        val fc = RandomAccessFile(config.savePhotosFolder + File.separator + "videoDiary" + timestamp + ".mp4", "rw").channel
+//        out.writeContainer(fc)
+//        fc.close()
+//    }
     private fun hasCameraAndStoragePermission() = hasCameraPermission() && hasWriteStoragePermission()
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {

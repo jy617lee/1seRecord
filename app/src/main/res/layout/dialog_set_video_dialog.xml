@@ -50,15 +50,4 @@
             android:textSize="20sp"
             android:layout_weight="3" />
     </LinearLayout>
-
-    <Button
-        android:id="@+id/btn_make_movie"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"
-        android:text="MAKE MOVIE"
-        android:textColor="@android:color/black"
-        android:background="@color/color_primary"/>
 </RelativeLayout>
